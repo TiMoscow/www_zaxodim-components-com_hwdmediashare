@@ -35,7 +35,7 @@ if ( $percent > 100 ) { $percent = 100; }
     <!-- Media Header -->
     <div class="media-header">
       <?php if ($this->params->get('mediaitem_meta_title') != '0') :?>
-        <h2 class="media-media-title"><?php echo $this->escape($this->params->get('page_heading')); ?></h2>
+        <h1 class="media-media-title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
       <?php endif; ?>     
       <!-- Buttons -->
       <div class="btn-group pull-right">
