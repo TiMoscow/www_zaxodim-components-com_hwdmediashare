@@ -71,7 +71,8 @@ class hwdMediaShareModelCategories extends JModelList
                 $hwdms = hwdMediaShareFactory::getInstance();
                 $config = $hwdms->getConfig();
                 
-		if(!count($this->_items))
+
+          if(!isset($this->_items) && empty($this->_items)) //  не совместимо с php7.3  (заменено)
 		{
 			$options = array();
                         $options['countItems'] = $config->get('category_list_meta_media_count') != 0 ? 1 : 0;

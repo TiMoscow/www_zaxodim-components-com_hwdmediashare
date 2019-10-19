@@ -85,7 +85,7 @@ $canDelete = ($user->authorise('core.delete', 'com_hwdmediashare.category.'.$ite
         <dd class="media-info-description"><?php echo $this->escape(JHtml::_('string.truncate', $item->description, $this->params->get('list_desc_truncate'), false, false)); ?></dd>
       <?php endif; ?>
       <div class="clearfix"></div>       
-      <?php if ($this->params->get('category_list_meta_media_count') != '0' && count($item->numitems)) :?>
+      <?php if ($this->params->get('category_list_meta_media_count') != '0' && isset($item->numitems) && !empty($item->numitems)) : //  не совместимо с php7.3  (заменено) ?>
         <dd class="media-info-count"><?php echo JText::plural('COM_HWDMS_X_MEDIA_COUNT', (int) $item->numitems); ?></dd>
       <?php endif; ?>
       <?php if ($this->params->get('category_list_meta_subcategory_count') != '0' && count($item->getChildren())) :?>

@@ -410,6 +410,7 @@ class hwdMediaShareUpload extends JObject
 //****************************************************************************************************************
 
 $THIS_VERSION = "1.3";                                // Version of this file
+//$UBER_VERSION = "*NOT-VERSION*";                                // Version of this file
 $UPLOAD_ID = '';                                      // Initialize upload id
 
 require_once(JPATH_ROOT.'/components/com_hwdmediashare/libraries/uber/ubr_ini.php');
@@ -1347,8 +1348,8 @@ $_FILE_DATA = getFileData($_XML_DATA);                         // Get file data 
                 if (empty($data['title']))                                         unset($data['title']);
                 if (empty($data['alias']))                                         unset($data['alias']);
                 if (empty($data['description']))                                   unset($data['description']);
-                if (count($data['catid']) < 1 && !isset($_POST['jform']['catid'])) unset($data['catid']); // Don't unset the category if an empty array exists in the post because this indicates hte user
-                if (count($data['tags']) < 1)                                      unset($data['tags']);
+                if (isset($data['catid']) && !empty($data['catid'])  && !isset($_POST['jform']['catid'])) unset($data['catid']); //  не совместимо с php7.3 (заменено)   // Don't unset the category if an empty array exists in the post because this indicates hte user
+                if (isset($data['tags']) && !empty($data['tags']))                 unset($data['tags']); //  не совместимо с php7.3 (заменено)
                 if (empty($data['description']))                                   unset($data['description']);
                 if (!isset($_POST['jform']['published']))                          unset($data['published']); // Allow zero value.
                 if (!isset($_POST['jform']['featured']))                           unset($data['featured']); // Allow zero value.
@@ -1368,9 +1369,9 @@ $_FILE_DATA = getFileData($_XML_DATA);                         // Get file data 
                 if (empty($data['link_url']))                                      unset($data['link_url']);
                 if (empty($data['embed_code']))                                    unset($data['embed_code']);
                 
-                if (count($data['source_type']) < 1)                               unset($data['source_type']);
-                if (count($data['source_quality']) < 1)                            unset($data['source_quality']);
-                if (count($data['source_url']) < 1)                                unset($data['source_file']);
+                if (isset($data['source_type']) && !empty($data['source_type']))               unset($data['source_type']); //  не совместимо с php7.3 (заменено)
+                if (isset($data['source_quality']) && !empty($data['source_quality']))         unset($data['source_quality']); //  не совместимо с php7.3 (заменено)
+                if (isset($data['source_url']) && !empty($data['source_url']))                 unset($data['source_file']); // не совместимо с php7.3 (заменено)
 
                 return $data;    
         }
