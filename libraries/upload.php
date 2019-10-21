@@ -410,7 +410,7 @@ class hwdMediaShareUpload extends JObject
 //****************************************************************************************************************
 
 $THIS_VERSION = "1.3";                                // Version of this file
-//$UBER_VERSION = "*NOT-VERSION*";                                // Version of this file
+$UBER_VERSION = "*NOT-VERSION*";                                // Version of this file
 $UPLOAD_ID = '';                                      // Initialize upload id
 
 require_once(JPATH_ROOT.'/components/com_hwdmediashare/libraries/uber/ubr_ini.php');
@@ -802,7 +802,7 @@ $_FILE_DATA = getFileData($_XML_DATA);                         // Get file data 
                 }
 
                 // Remove current thumbnail if requested or new thumbnail is attached to form.
-                if (isset($file) && is_uploaded_file($file['tmp_name']) || $data['remove_thumbnail'])
+                if ((isset($file) && is_uploaded_file($file['tmp_name'])) || $data['remove_thumbnail'])
                 {
                         $HWDfiles = hwdMediaShareFiles::getInstance();
                         $HWDfiles->elementType = $this->elementType;
@@ -852,7 +852,7 @@ $_FILE_DATA = getFileData($_XML_DATA);                         // Get file data 
                                 {
                                         // Attempt resize on the fly.
                                         $width = $this->elementType == 5 ? 1080 : 500;
-                                        $width = 1080;
+                                        //$width = 1080;
                                         hwdMediaShareFactory::load('images');
                                         $HWDimages = hwdMediaShareImages::getInstance();
                                         $HWDimages->resizeImage($dest, $width); 
