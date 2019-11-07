@@ -51,7 +51,8 @@ $subcatcols = min($this->columns, 3);
                 <!-- Item Meta -->
                 <dl class="media-info">
                   <dt class="media-info-term"><?php echo JText::_('COM_HWDMS_DETAILS'); ?> </dt>  
-                  <?php if ($this->params->get('category_list_meta_media_count') != '0' && count($item->numitems)) :?>
+                  <?php // if ($this->params->get('category_list_meta_media_count') != '0' && count($item->numitems)) :?>
+                  <?php if ($this->params->get('category_list_meta_media_count') != '0' && isset($item->numitems) && !empty($item->numitems)) : //  не совместимо с php7.3  (заменено)?>
                     <dd class="media-info-count"><?php echo JText::plural('COM_HWDMS_X_MEDIA_COUNT', (int) $item->numitems); ?></dd>
                   <?php endif; ?>
                   <?php if ($this->params->get('category_list_meta_subcategory_count') != '0' && count($item->getChildren())) :?>
